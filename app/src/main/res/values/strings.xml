@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">PASIdostawa</string>
+    <string name="login">Zaloguj się</string>
+    <string name="login_button">Loguj</string>
+    <string name="order">Zamówienie</string>
+    <string name="history_order">Historia zamówień</string>
+    <string name="car">Samochód</string>
+    <string name="calendar">Zmiany</string>
+    <string name="settings">Ustawienia</string>
+    <string name="logout">Wyloguj</string>
+    <string name="reset_pwd">Zresetuj hasło</string>
+    <string name="developers">Developed by: Paweł Niedziółka</string>
+    <string name="developers2">and Krzysztof Górski</string>
+
+    <string name="navigation_drawer_open">Otworz pasek nawigacyjny</string>
+    <string name="navigation_drawer_close">Zamknij pasek nawigacyjny</string>
+</resources>
