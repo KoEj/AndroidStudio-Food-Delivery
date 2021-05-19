@@ -59,8 +59,23 @@ public class loggedActivity extends AppCompatActivity implements NavigationView.
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()) {
             case R.id.nav_order:
-                Intent intent = new Intent(loggedActivity.this,orderActivity.class);
-                startActivity(intent);
+                Intent intent_order = new Intent(loggedActivity.this,orderActivity.class);
+                startActivity(intent_order);
+                break;
+
+            case R.id.nav_history_orders:
+                Intent intent_history_orders = new Intent(loggedActivity.this,historyOrdersActivity.class);
+                startActivity(intent_history_orders);
+                break;
+
+            case R.id.nav_car:
+                Intent intent_car = new Intent(loggedActivity.this,carActivity.class);
+                startActivity(intent_car);
+                break;
+
+            case R.id.nav_calendar:
+                Intent intent_shift = new Intent(loggedActivity.this,shiftActivity.class);
+                startActivity(intent_shift);
                 break;
 
             case R.id.nav_reset_password:

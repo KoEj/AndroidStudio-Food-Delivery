@@ -18,9 +18,21 @@ import androidx.appcompat.widget.Toolbar;
 
 public class orderActivity extends AppCompatActivity {
 
+    Button button_help;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
+
+        button_help = findViewById(R.id.button_help);
+
+        button_help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_order_help = new Intent(orderActivity.this,orderHelpActivity.class);
+                startActivity(intent_order_help);
+            }
+        });
     }
 }

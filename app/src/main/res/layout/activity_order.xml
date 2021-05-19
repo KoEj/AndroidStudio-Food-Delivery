@@ -17,7 +17,7 @@
         android:layout_marginRight="15dp"
         android:text="Tu będą informacje o zamówieniu - adresie dostarczenia itp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView5"
+        app:layout_constraintStart_toEndOf="@+id/car_shift"
         app:layout_constraintTop_toBottomOf="@+id/order_delivery_text" />
 
     <TextView
@@ -31,11 +31,11 @@
         android:layout_marginRight="15dp"
         android:text="Tu będą informacje o zamówieniu - adresie dostarczenia itp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/order_delivery"
+        app:layout_constraintStart_toEndOf="@+id/car_phone"
         app:layout_constraintTop_toBottomOf="@+id/order_local_text" />
 
     <ImageView
-        android:id="@+id/order_local"
+        android:id="@+id/car_car"
         android:layout_width="128dp"
         android:layout_height="128dp"
         android:layout_marginStart="15dp"
@@ -57,11 +57,11 @@
         android:layout_marginRight="15dp"
         android:text="Tu będzie adres lokalu dla zamówienia"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/order_local"
+        app:layout_constraintStart_toEndOf="@+id/car_car"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/order_delivery"
+        android:id="@+id/car_phone"
         android:layout_width="128dp"
         android:layout_height="128dp"
         android:layout_marginStart="15dp"
@@ -69,28 +69,28 @@
         android:layout_marginTop="30dp"
         android:contentDescription="Obrazek"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/order_local"
+        app:layout_constraintTop_toBottomOf="@+id/car_car"
         app:srcCompat="@drawable/nav_order" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/car_shift"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/order_delivery"
+        app:layout_constraintTop_toBottomOf="@+id/car_phone"
         app:srcCompat="@drawable/order_wallet" />
 
     <TableLayout
         android:layout_width="348dp"
         android:layout_height="296dp"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5">
+        app:layout_constraintTop_toBottomOf="@+id/car_shift">
 
         <TableRow
             android:layout_width="match_parent"

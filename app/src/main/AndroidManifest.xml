@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/logo_solo"
         android:supportsRtl="true"
         android:theme="@style/Theme.BazyDanych">
-        <activity android:name=".loggedActivity"></activity>
+        <activity android:name=".orderHelpActivity"></activity>
+        <activity android:name=".shiftActivity" />
+        <activity android:name=".carActivity" />
+        <activity android:name=".historyOrdersActivity" />
+        <activity android:name=".loggedActivity" />
         <activity android:name=".orderActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
