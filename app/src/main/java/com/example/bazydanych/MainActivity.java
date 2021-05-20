@@ -18,8 +18,8 @@ public class MainActivity extends AppCompatActivity {
 
     Button button;
     TextView editText;
-    String ip,db,user,pswd,z;
-    Connection con;
+    String ip,db,user,pswd;
+    Connection con = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,17 +28,19 @@ public class MainActivity extends AppCompatActivity {
         button = findViewById(R.id.button);
         editText = findViewById(R.id.textView3);
 
-        ip = "127.0.0.1:3306";
+        //    /usr/local/etc
+        //    my.cnf
+        ip = "172.20.10.9";
         db = "mydb";
         user = "root";
         pswd = "root1234";
+        //pswd = "some_pass";
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CheckLogin checkLogin = new CheckLogin();
                 checkLogin.execute("");
-
                 //Jezeli login i haslo sie zgadzaja to wykonaj
                 //Intent intent_login = new Intent(MainActivity.this, loggedActivity.class);
                 //startActivity(intent_login);
@@ -56,9 +58,13 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... strings) {
             try {
+                Class.forName("com.mysql.jdbc.Driver");
+                System.out.println("connecting");
+                //con = DriverManager.getConnection("jdbc:mysql://192.168.1.35:3306/mydb?user=admin&password=some_pass");
                 con = connectionclass(user,pswd,db,ip);
                 if (con == null) {
                     z = "Blad! Sprawdz lacze internetowe!";
+                    editText.setText(z);
                 }
                 else {
                     String query = "select * from ADRES";
@@ -66,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                     ResultSet rs = stat.executeQuery(query);
                 }
             } catch (Exception ex) {
-                z = ex.getMessage();
+                ex.getMessage();
             }
             return z;
         }
@@ -82,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         Connection connection = null;
-        String ConnectionURL = null;
+        String ConnectionURL;
         try {
             Class.forName("com.mysql.jdbc.Driver");
             ConnectionURL = "jdbc:mysql://" + ip + "/" + db + "?user=" + user + "&password=" + pswd;
