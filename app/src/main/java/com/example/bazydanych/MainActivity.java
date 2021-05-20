@@ -30,11 +30,11 @@ public class MainActivity extends AppCompatActivity {
 
         //    /usr/local/etc
         //    my.cnf
-        ip = "172.20.10.9";
+        ip = "192.168.0.15";
         db = "mydb";
-        user = "root";
-        pswd = "root1234";
-        //pswd = "some_pass";
+        user = "admin";
+        //pswd = "root1234";
+        pswd = "some_pass";
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,11 +67,14 @@ public class MainActivity extends AppCompatActivity {
                     editText.setText(z);
                 }
                 else {
+                    editText.setText("dziala");
+                    z="Działa ";
                     String query = "select * from ADRES";
                     Statement stat = con.createStatement();
                     ResultSet rs = stat.executeQuery(query);
                 }
             } catch (Exception ex) {
+                z= "error";
                 ex.getMessage();
             }
             return z;
@@ -90,14 +93,16 @@ public class MainActivity extends AppCompatActivity {
         Connection connection = null;
         String ConnectionURL;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            editText.setText("PROBUJE");
             ConnectionURL = "jdbc:mysql://" + ip + "/" + db + "?user=" + user + "&password=" + pswd;
-            connection = DriverManager.getConnection(ConnectionURL);
-        } catch (ClassNotFoundException e) {
+            connection = DriverManager.getConnection("jdbc:mysql://192.168.0.15:3306/mydb?user=admin&password=some_pass");
+                    //(ConnectionURL);
+        } catch(Throwable e) {
+            editText.setText("error ;cc");
             e.printStackTrace();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
         }
+        editText.setText("Done");
         return connection;
     }
 
