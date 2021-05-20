@@ -49,16 +49,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @SuppressLint("StaticFieldLeak")
     public class CheckLogin extends AsyncTask<String,String,String> {
         String z = "";
-        Boolean inSuccess = false;
-
 
         @Override
         protected String doInBackground(String... strings) {
-            //String username
-            //String password
-
             try {
                 con = connectionclass(user,pswd,db,ip);
                 if (con == null) {
@@ -70,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
                     ResultSet rs = stat.executeQuery(query);
                 }
             } catch (Exception ex) {
-                inSuccess = false;
                 z = ex.getMessage();
             }
             return z;
@@ -90,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         String ConnectionURL = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            ConnectionURL = "jdbc:mysql://" + ip + db + ";user=" + user + ";password=" + pswd + ";";
+            ConnectionURL = "jdbc:mysql://" + ip + "/" + db + "?user=" + user + "&password=" + pswd;
             connection = DriverManager.getConnection(ConnectionURL);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
