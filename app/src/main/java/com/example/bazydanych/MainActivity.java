@@ -2,10 +2,14 @@ package com.example.bazydanych;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.sql.*;
 
@@ -14,6 +18,9 @@ public class MainActivity extends AppCompatActivity {
 
     Button button;
     TextView editText;
+    String ip,db,user,pswd,z;
+    Connection con;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,36 +28,16 @@ public class MainActivity extends AppCompatActivity {
         button = findViewById(R.id.button);
         editText = findViewById(R.id.textView3);
 
-        /*Connection conn = null;
-        try {
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?"
-                    + "user=root&password=root1234");
-
-            editText.setBackgroundColor(Color.GREEN);
-            editText.setText("Connected to the database");
-
-            conn.close();
-
-            editText.setBackgroundColor(Color.BLUE);
-            editText.setText("Disconnected from database");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            editText.setText("BLAD");
-        }*/
-
-        try {
-            tryConnection();
-            editText.setText("poszlo");
-        } catch (Exception e) {
-            e.printStackTrace();
-            editText.setText("nie poszlo");
-        }
+        ip = "127.0.0.1:3306";
+        db = "mydb";
+        user = "root";
+        pswd = "root1234";
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                CheckLogin checkLogin = new CheckLogin();
+                checkLogin.execute("");
 
                 //Jezeli login i haslo sie zgadzaja to wykonaj
                 //Intent intent_login = new Intent(MainActivity.this, loggedActivity.class);
@@ -62,15 +49,56 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public class CheckLogin extends AsyncTask<String,String,String> {
+        String z = "";
+        Boolean inSuccess = false;
 
-    public boolean tryConnection() throws Exception {
-            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?"
-                    + "user=root&password=root1234");
-            boolean isValid = connection.isValid(2);
-            connection.close();
 
-            return isValid;
+        @Override
+        protected String doInBackground(String... strings) {
+            //String username
+            //String password
+
+            try {
+                con = connectionclass(user,pswd,db,ip);
+                if (con == null) {
+                    z = "Blad! Sprawdz lacze internetowe!";
+                }
+                else {
+                    String query = "select * from ADRES";
+                    Statement stat = con.createStatement();
+                    ResultSet rs = stat.executeQuery(query);
+                }
+            } catch (Exception ex) {
+                inSuccess = false;
+                z = ex.getMessage();
+            }
+            return z;
+        }
+
+        @Override
+        protected void onPostExecute(String z) {
+            Toast.makeText(MainActivity.this,z, Toast.LENGTH_LONG).show();
+        }
     }
+
+    @SuppressLint("NewApi")
+    public Connection connectionclass(String user, String pswd, String db, String ip) {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        Connection connection = null;
+        String ConnectionURL = null;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            ConnectionURL = "jdbc:mysql://" + ip + db + ";user=" + user + ";password=" + pswd + ";";
+            connection = DriverManager.getConnection(ConnectionURL);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return connection;
+    }
+
 
 }
