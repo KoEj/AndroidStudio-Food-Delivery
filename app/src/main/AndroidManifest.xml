@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.bazydanych">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -11,7 +12,8 @@
         android:roundIcon="@mipmap/logo_solo"
         android:supportsRtl="true"
         android:theme="@style/Theme.BazyDanych">
-        <activity android:name=".orderHelpActivity"></activity>
+        <activity android:name=".forgotActivity"></activity>
+        <activity android:name=".orderHelpActivity" />
         <activity android:name=".shiftActivity" />
         <activity android:name=".carActivity" />
         <activity android:name=".historyOrdersActivity" />

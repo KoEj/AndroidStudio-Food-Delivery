@@ -13,7 +13,14 @@
     <string name="developers2">and Krzysztof Górski</string>
     <string name="f_pwd">Zapomniałeś hasła?</string>
     <string name="haslo">hasło</string>
-    <string name="login_hint">login</string>
+    <string name="login_hint">ID pracownika</string>
+    <string name="forget">Zresetuj hasło</string>
+    <string name="Forget_first_name">Podaj imię</string>
+    <string name="Forget_second_name">Podaj nazwisko</string>
+    <string name="Forget_ID">Podaj ID pracownika</string>
+    <string name="Forget_pswd">Podaj nowe hasło</string>
+    <string name="Forget_new_pswd">Powtórz nowe hasło</string>
+    <string name="Forget">Resetuj hasło</string>
     <string name="navigation_drawer_open">Otworz pasek nawigacyjny</string>
     <string name="navigation_drawer_close">Zamknij pasek nawigacyjny</string>
 </resources>

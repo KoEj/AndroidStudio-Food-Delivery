@@ -19,7 +19,7 @@
         app:layout_constraintTop_toBottomOf="@+id/Forgot_password" />
 
     <TextView
-        android:id="@+id/Login"
+        android:id="@+id/Reset"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
@@ -45,7 +45,7 @@
         app:titleTextColor="#000000" />
 
     <EditText
-        android:id="@+id/Password"
+        android:id="@+id/Forgot_second"
         android:layout_width="0dp"
         android:layout_height="69dp"
         android:layout_marginStart="25dp"
@@ -60,11 +60,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Login_name"
+        app:layout_constraintTop_toBottomOf="@+id/Forgot_first"
         android:autofillHints="" />
 
     <EditText
-        android:id="@+id/Login_name"
+        android:id="@+id/Forgot_first"
         android:layout_width="0dp"
         android:layout_height="74dp"
         android:layout_marginStart="25dp"
@@ -72,15 +72,15 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="25dp"
         android:layout_marginRight="25dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/login_hint"
-        android:inputType="textPersonName"
+        android:inputType="numberSigned"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Login"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/Reset" />
 
     <Button
         android:id="@+id/Forgot_password"
@@ -101,16 +101,6 @@
         app:iconTint="#00FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Password" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="336dp"
-        android:layout_height="72dp"
-        android:text="brak"
-        app:layout_constraintBottom_toTopOf="@+id/Login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/Forgot_second" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
