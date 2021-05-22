@@ -38,8 +38,8 @@ public class loggedActivity extends AppCompatActivity implements NavigationView.
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
-
         navigationView.setCheckedItem(R.id.nav_view);
+
     }
 
     @Override
@@ -56,29 +56,37 @@ public class loggedActivity extends AppCompatActivity implements NavigationView.
     @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        String ID = getIntent().getStringExtra("ID");
         switch(item.getItemId()) {
             case R.id.nav_order:
                 Intent intent_order = new Intent(loggedActivity.this,orderActivity.class);
+                intent_order.putExtra("ID",ID);
                 startActivity(intent_order);
                 break;
 
             case R.id.nav_history_orders:
                 Intent intent_history_orders = new Intent(loggedActivity.this,historyOrdersActivity.class);
+                intent_history_orders.putExtra("ID",ID);
                 startActivity(intent_history_orders);
                 break;
 
             case R.id.nav_car:
                 Intent intent_car = new Intent(loggedActivity.this,carActivity.class);
+                intent_car.putExtra("ID",ID);
                 startActivity(intent_car);
                 break;
 
             case R.id.nav_calendar:
                 Intent intent_shift = new Intent(loggedActivity.this,shiftActivity.class);
+                intent_shift.putExtra("ID",ID);
                 startActivity(intent_shift);
                 break;
 
             case R.id.nav_reset_password:
-                Toast.makeText(this,"Jeszcze nie skonczone :)",Toast.LENGTH_SHORT).show();
+                Intent intent_reset_password = new Intent (loggedActivity.this,forgotActivity.class);
+                startActivity(intent_reset_password);
+                loggedActivity.this.finish();
+                //Toast.makeText(this,"Jeszcze nie skonczone :)",Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.nav_logout:

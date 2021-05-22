@@ -21,42 +21,40 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 @SuppressLint("StaticFieldLeak")
-public class forgotBackground  extends AsyncTask<String, Void, String> {
+public class orderBackground  extends AsyncTask<String, Void, String> {
     Context context;
     AlertDialog alertDialog;
 
-    public forgotBackground(Context con) {
+    public orderBackground(Context con) {
         context = con;
     }
 
     @Override
     protected void onPreExecute() {
         alertDialog = new AlertDialog.Builder(context).create();
-        alertDialog.setTitle("Password change");
+        alertDialog.setTitle("Test");
     }
 
     @Override
     protected void onPostExecute(String s) {
-        if(s.equals("Zmiana hasła udana! Zaloguj się nowym hasłem.")) {
-            Intent intent_back_to_main = new Intent(context, MainActivity.class);
-            context.startActivity(intent_back_to_main);
-            forgotActivity.fa.finish();
-            Toast.makeText(context,"Zmiana hasła udana! Zaloguj się nowym hasłem.",Toast.LENGTH_LONG).show();
-        } else {
-            alertDialog.setMessage(s);
-            alertDialog.show();
+        alertDialog.setMessage(s);
+        alertDialog.show();
+
+
+        /*
+        if(s.equals("Logowanie udane!")) {
+            Intent intent_login = new Intent(context, loggedActivity.class);
+            context.startActivity(intent_login);
+            MainActivity.fa.finish();
+            Toast.makeText(context,"Logowanie udane!",Toast.LENGTH_LONG).show();
         }
+        */
     }
 
     @Override
     protected String doInBackground(String... strings) {
-        String connection = "http://192.168.0.15/forgot.php";
-
-        String first_name= strings[0];
-        String second_name = strings[1];
-        String ID= strings[2];
-        String new_pswd = strings[3];
-        String new_pswd_2 = strings[4];
+        String connection = "http://192.168.0.15/order.php";
+        String ID = strings[0];
         String result = "";
         String line = "";
 
@@ -70,15 +68,12 @@ public class forgotBackground  extends AsyncTask<String, Void, String> {
 
             OutputStream outputStream = httpURLConnection.getOutputStream();
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
-            String post_data = URLEncoder.encode("first_name","UTF-8")+"="+URLEncoder.encode(first_name,"UTF-8")+
-                    "&"+URLEncoder.encode("second_name","UTF-8")+"="+URLEncoder.encode(second_name,"UTF-8") +
-                    "&"+URLEncoder.encode("ID","UTF-8")+"="+URLEncoder.encode(ID,"UTF-8") +
-                    "&"+URLEncoder.encode("new_pswd","UTF-8")+"="+URLEncoder.encode(new_pswd,"UTF-8") +
-                    "&"+URLEncoder.encode("new_pswd_2","UTF-8")+"="+URLEncoder.encode(new_pswd_2,"UTF-8");
+            String post_data = URLEncoder.encode("ID","UTF-8")+"="+URLEncoder.encode(ID,"UTF-8");
             bufferedWriter.write(post_data);
             bufferedWriter.flush();
             bufferedWriter.close();
             outputStream.close();
+
 
             InputStream inputStream = httpURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"ISO-8859-1"));
@@ -91,14 +86,7 @@ public class forgotBackground  extends AsyncTask<String, Void, String> {
             inputStream.close();
             httpURLConnection.disconnect();
 
-            if (result.equals("Connectedpassword changed")) {
-                return "Zmiana hasła udana! Zaloguj się nowym hasłem.";
-            } else if (result.equals("Connectedpassword not changed")) {
-                return "Wprowadzone hasła się nie zgadzają!";
-            } else {
-                return "Zostały podane złe dane! Sprawdź imię, nazwisko oraz ID. Pamiętaj: imię i nazwisko muszą zaczynać się od dużej litery!";
-            }
-
+            return result;
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {

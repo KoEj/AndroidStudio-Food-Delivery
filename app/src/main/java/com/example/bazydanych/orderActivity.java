@@ -3,29 +3,31 @@ package com.example.bazydanych;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
-import com.google.android.material.navigation.NavigationView;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 public class orderActivity extends AppCompatActivity {
 
     Button button_help;
+    Button button_accepted;
+    Button button_denied;
+    Button button_refresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
 
+        button_refresh = findViewById(R.id.button_refresh);
+        button_accepted = findViewById(R.id.button_accepted);
+        button_denied = findViewById(R.id.button_denied);
         button_help = findViewById(R.id.button_help);
+        String ID = getIntent().getStringExtra("ID");
+
+        forgotBackground bg = new forgotBackground(orderActivity.this);
+        System.out.print("SIEMA");
 
         button_help.setOnClickListener(new View.OnClickListener() {
             @Override

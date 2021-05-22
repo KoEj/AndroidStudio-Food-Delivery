@@ -2,12 +2,17 @@ package com.example.bazydanych;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 public class forgotActivity extends AppCompatActivity {
+
+    @SuppressLint("StaticFieldLeak")
+    public static Activity fa;
 
     Button forgot_pswd;
     EditText first_name_n;
@@ -26,6 +31,7 @@ public class forgotActivity extends AppCompatActivity {
         ID_n = findViewById(R.id.Forgot_ID);
         new_pswd_n = findViewById(R.id.Forgot_pswd);
         new_pswd_2_n = findViewById(R.id.Forgot_new_pswd);
+        fa = this;
 
 
 

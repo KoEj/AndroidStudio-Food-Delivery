@@ -24,26 +24,30 @@ import java.net.URLEncoder;
 public class loginBackground  extends AsyncTask<String, Void, String> {
     Context context;
     AlertDialog alertDialog;
+    Intent intent_login;
 
     public loginBackground(Context con) {
         context = con;
     }
 
+
     @Override
     protected void onPreExecute() {
         alertDialog = new AlertDialog.Builder(context).create();
         alertDialog.setTitle("Login status");
+        intent_login = new Intent(context, loggedActivity.class);
     }
 
     @Override
     protected void onPostExecute(String s) {
-        alertDialog.setMessage(s);
-        alertDialog.show();
-
         if(s.equals("Logowanie udane!")) {
-            Intent intent_login = new Intent(context, loggedActivity.class);
             context.startActivity(intent_login);
             MainActivity.fa.finish();
+            Toast.makeText(context,"Logowanie udane!",Toast.LENGTH_LONG).show();
+        }
+        else {
+            alertDialog.setMessage(s);
+            alertDialog.show();
         }
     }
 
@@ -51,9 +55,11 @@ public class loginBackground  extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... strings) {
         String connection = "http://192.168.0.15/login.php";
         String username = strings[0];
+        intent_login.putExtra("ID", username);
         String password = strings[1];
         String result = "";
         String line = "";
+
 
         try {
             URL url = new URL(connection);

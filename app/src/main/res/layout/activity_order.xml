@@ -97,10 +97,22 @@
             android:layout_height="match_parent">
 
             <Button
+                android:id="@+id/button_refresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/refresh"
+                app:backgroundTint="#ADFF9800" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
                 android:id="@+id/button_accepted"
                 android:layout_width="250dp"
                 android:layout_height="46dp"
-                android:text="Odebrane"
+                android:text="@string/accepted"
                 app:backgroundTint="#B34BAF50" />
 
         </TableRow>
@@ -113,7 +125,7 @@
                 android:id="@+id/button_denied"
                 android:layout_width="100dp"
                 android:layout_height="46dp"
-                android:text="Nieodebrane"
+                android:text="@string/denied"
                 app:backgroundTint="#B4CA2F24" />
         </TableRow>
 
@@ -125,7 +137,7 @@
                 android:id="@+id/button_help"
                 android:layout_width="100dp"
                 android:layout_height="46dp"
-                android:text="Pomoc"
+                android:text="@string/help"
                 app:backgroundTint="#A92196F3" />
         </TableRow>
 
