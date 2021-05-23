@@ -94,10 +94,8 @@ public class orderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 buttonStatus[0] = "1";
-
                 orderButtonBackground bg = new orderButtonBackground(orderActivity.this);
                 bg.execute(order_number[0],buttonStatus[0]);
-
             }
         });
 
@@ -105,10 +103,8 @@ public class orderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 buttonStatus[0] = "0";
-
                 orderButtonBackground bg = new orderButtonBackground(orderActivity.this);
                 bg.execute(order_number[0],buttonStatus[0]);
-
             }
         }));
     }

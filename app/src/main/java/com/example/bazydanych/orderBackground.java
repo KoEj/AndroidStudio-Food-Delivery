@@ -45,13 +45,10 @@ public class orderBackground  extends AsyncTask<String, Void, String> {
         //alertDialog.setMessage(s);
         //alertDialog.show();
 
-        if (splitted[1].equals("Wyszukano\n") && splitted[0].equals("Connected\n")) {
+        if (splitted[1].equals("Wyszukano\n") && splitted[0].equals("Connected\n") && !splitted[3].equals("\n")) {
             context.startActivity(intent_order);
         } else {
-            Toast.makeText(context, "Bład połączenia z bazą danych!", Toast.LENGTH_LONG).show();
-            //Intent intent_get_back = new Intent (context,loggedActivity.class);
-            //intent_get_back.putExtra("ID",ID);
-            //context.startActivity(intent_order);
+            Toast.makeText(context, "Brak danych w bazie danych!", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -61,7 +58,6 @@ public class orderBackground  extends AsyncTask<String, Void, String> {
         ID = strings[0];
         String result = "";
         String line = "";
-
 
         try {
             URL url = new URL(connection);
@@ -91,9 +87,8 @@ public class orderBackground  extends AsyncTask<String, Void, String> {
             inputStream.close();
             httpURLConnection.disconnect();
 
-
             splitted = result.split("#");
-            if (splitted[1].equals("Wyszukano\n") && splitted[0].equals("Connected\n")) {
+            if (splitted[1].equals("Wyszukano\n") && splitted[0].equals("Connected\n") && !splitted[3].equals("\n")) {
                 intent_order = new Intent(context, orderActivity.class);
                 intent_order.putExtra("set_status", splitted[2]);
                 intent_order.putExtra("set_klient", splitted[3]);

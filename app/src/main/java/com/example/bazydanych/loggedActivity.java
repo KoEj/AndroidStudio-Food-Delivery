@@ -62,11 +62,8 @@ public class loggedActivity extends AppCompatActivity implements NavigationView.
             case R.id.nav_order:
                 orderBackground bg = new orderBackground(this);
                 bg.execute(ID);
-
-                if(bg.getStatus() == AsyncTask.Status.FINISHED) {
-                    //startActivity(intent_order);
-                    //finish();
-                }
+               // if(bg.getStatus() == AsyncTask.Status.FINISHED) {
+               // }
                 break;
 
             case R.id.nav_history_orders:

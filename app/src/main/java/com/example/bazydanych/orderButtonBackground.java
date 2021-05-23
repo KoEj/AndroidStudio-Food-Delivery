@@ -42,11 +42,8 @@ public class orderButtonBackground extends AsyncTask<String, Void, String> {
             Toast.makeText(context, "Status zamówienia zmieniony!", Toast.LENGTH_LONG).show();
         }
         if (s.equals("Connectedinvaild data")) {
-            s = "Błąd!";
-            alertDialog.setMessage(s);
-            alertDialog.show();
+            Toast.makeText(context, "Nieprawidłowe połączenie!", Toast.LENGTH_LONG).show();
         }
-
     }
 
     @Override
