@@ -4,6 +4,7 @@ package com.example.bazydanych;
         import android.annotation.SuppressLint;
         import android.app.Activity;
         import android.content.Intent;
+        import android.os.AsyncTask;
         import android.os.Bundle;
         import android.view.MenuItem;
         import android.widget.Toast;
@@ -59,9 +60,13 @@ public class loggedActivity extends AppCompatActivity implements NavigationView.
         String ID = getIntent().getStringExtra("ID");
         switch(item.getItemId()) {
             case R.id.nav_order:
-                Intent intent_order = new Intent(loggedActivity.this,orderActivity.class);
-                intent_order.putExtra("ID",ID);
-                startActivity(intent_order);
+                orderBackground bg = new orderBackground(this);
+                bg.execute(ID);
+
+                if(bg.getStatus() == AsyncTask.Status.FINISHED) {
+                    //startActivity(intent_order);
+                    //finish();
+                }
                 break;
 
             case R.id.nav_history_orders:

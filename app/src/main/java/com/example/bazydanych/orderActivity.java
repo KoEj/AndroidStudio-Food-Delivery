@@ -21,10 +21,10 @@ public class orderActivity extends AppCompatActivity {
     Button button_help;
     Button button_accepted;
     Button button_denied;
-    Button button_refresh;
     TextView order_local_text;
     TextView order_delivery_text;
     TextView order_payment_text;
+    TextView order_status;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -37,16 +37,20 @@ public class orderActivity extends AppCompatActivity {
         final String[] set_adres = { "" };
         final String[] set_lokal = { "" };
         final String[] set_platnosc = { "" };
+        String[] adres ={""};
+        String[] klient ={""};
+        String[] lokal={""};
+
         Intent intent = getIntent();
         fa = this;
 
-        button_refresh = findViewById(R.id.button_refresh);
         button_accepted = findViewById(R.id.button_accepted);
         button_denied = findViewById(R.id.button_denied);
         button_help = findViewById(R.id.button_help);
         order_local_text = findViewById(R.id.order_local_text);
         order_delivery_text = findViewById(R.id.order_delivery_text);
         order_payment_text = findViewById(R.id.order_payment_text);
+        order_status = findViewById(R.id.order_status);
 
         String ID = getIntent().getStringExtra("ID");
 
@@ -56,23 +60,24 @@ public class orderActivity extends AppCompatActivity {
         set_lokal[0] = intent.getStringExtra("set_lokal");
         set_platnosc[0] = intent.getStringExtra("set_platnosc");
 
-        order_local_text.setText(set_lokal[0]);
-        order_delivery_text.setText(set_klient[0] + "\n" + set_adres[0]);
-        order_payment_text.setText(set_platnosc[0] + "\n" + set_status[0]);
-
-        button_refresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                orderBackground bg = new orderBackground(orderActivity.this);
-                bg.execute(ID);
-
-                if(bg.getStatus() == AsyncTask.Status.FINISHED) {
-                    //finish();
-                }
+        adres = intent.getStringExtra("set_adres").split(" ");
+        klient= intent.getStringExtra("set_klient").split(" ");
+        lokal = intent.getStringExtra("set_lokal").split(" ");
 
 
-            }
-        });
+        order_local_text.setText(lokal[1] + lokal[2]);
+        if(adres[4].equals("")) {
+            order_delivery_text.setText(klient[6] +" "+ klient[7] + klient[5] + "\n" + klient[2] + klient[3] + klient[4]
+                    + "\n" + adres[2] +" "+ adres[3] +"\n"+ adres[6] +" "+ adres[7]);
+        } else if (adres[5].equals("")) {
+            order_delivery_text.setText(klient[6] + klient[7] + "\n" + klient[5] + "\n" + klient[2] + klient[3] + klient[4]
+                    + "\n" + adres[2] +" "+ adres[3] +"/" + adres[4] +"\n"+ adres[6] +" "+ adres[7]);
+        } else {
+            order_delivery_text.setText(klient[6] +" "+klient[7] + klient[5] + "\n" + klient[2] + klient[3] + klient[4]
+                    + "\n" + adres[2] +" "+ adres[3] +"/" + adres[4] +" lokal:" + adres[5] +"\n"+ adres[6] +" "+ adres[7]);
+        }
+        order_payment_text.setText(set_platnosc[0]);
+        order_status.setText(set_status[0]);
 
         button_help.setOnClickListener(new View.OnClickListener() {
             @Override

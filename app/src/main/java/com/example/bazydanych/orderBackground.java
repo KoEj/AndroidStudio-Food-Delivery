@@ -27,6 +27,8 @@ public class orderBackground  extends AsyncTask<String, Void, String> {
     AlertDialog alertDialog;
     Intent intent_order;
     String set_status = "", set_klient = "", set_adres = "", set_lokal = "", set_platnosc = "";
+    String[] splitted;
+    String ID;
 
     public orderBackground(Context con) {
         context = con;
@@ -36,26 +38,30 @@ public class orderBackground  extends AsyncTask<String, Void, String> {
     protected void onPreExecute() {
         alertDialog = new AlertDialog.Builder(context).create();
         alertDialog.setTitle("Test");
-        intent_order = new Intent(context, orderActivity.class);
     }
 
     @Override
     protected void onPostExecute(String s) {
-        alertDialog.setMessage(s);
-        alertDialog.show();
+        //alertDialog.setMessage(s);
+        //alertDialog.show();
 
-        //context.startActivity(intent_order);
-        //orderActivity.fa.finish();
-        Toast.makeText(context,"Ready!",Toast.LENGTH_LONG).show();
+        if (splitted[1].equals("Wyszukano\n") && splitted[0].equals("Connected\n")) {
+            context.startActivity(intent_order);
+        } else {
+            Toast.makeText(context, "Bład połączenia z bazą danych!", Toast.LENGTH_LONG).show();
+            //Intent intent_get_back = new Intent (context,loggedActivity.class);
+            //intent_get_back.putExtra("ID",ID);
+            //context.startActivity(intent_order);
+        }
     }
 
     @Override
     protected String doInBackground(String... strings) {
         String connection = "http://192.168.0.15/order.php";
-        String ID = strings[0];
+        ID = strings[0];
         String result = "";
         String line = "";
-        String[] splitted;
+
 
         try {
             URL url = new URL(connection);
@@ -85,17 +91,20 @@ public class orderBackground  extends AsyncTask<String, Void, String> {
             inputStream.close();
             httpURLConnection.disconnect();
 
+
             splitted = result.split("#");
-
-            if (splitted[0].equals("Connected\nWyszukano")) {
-                intent_order.putExtra("set_status", splitted[1]);
-                intent_order.putExtra("set_klient", splitted[2]);
-                intent_order.putExtra("set_adres", splitted[3]);
-                intent_order.putExtra("set_lokal", splitted[4]);
-                intent_order.putExtra("set_platnosc", splitted[5]);
-
+           // System.out.print(splitted[0]);
+            if (splitted[1].equals("Wyszukano\n") && splitted[0].equals("Connected\n")) {
+                intent_order = new Intent(context, orderActivity.class);
+                intent_order.putExtra("set_status", splitted[2]);
+                intent_order.putExtra("set_klient", splitted[3]);
+                intent_order.putExtra("set_adres", splitted[4]);
+                intent_order.putExtra("set_lokal", splitted[5]);
+                intent_order.putExtra("set_platnosc", splitted[6]);
                 return result;
             }
+            return "Bład połączenia z bazą danych!";
+
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
