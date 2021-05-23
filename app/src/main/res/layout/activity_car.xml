@@ -6,92 +6,78 @@
     android:layout_height="match_parent"
     tools:context=".carActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/car_text_calendar"
+        android:layout_width="205dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/car_calendar"
+        app:layout_constraintTop_toBottomOf="@+id/car_text_phone" />
+
+    <TextView
+        android:id="@+id/car_text_phone"
+        android:layout_width="205dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/car_phone"
+        app:layout_constraintTop_toBottomOf="@+id/car_text_car" />
+
+    <ImageView
+        android:id="@+id/car_phone"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/car_car"
+        app:srcCompat="@drawable/car_phone" />
 
-        <TextView
-            android:id="@+id/order_payment_text"
-            android:layout_width="210dp"
-            android:layout_height="128dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginRight="15dp"
-            android:text="Informacja o zmianie"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/order_wallet"
-            app:layout_constraintTop_toBottomOf="@+id/order_delivery_text" />
+    <ImageView
+        android:id="@+id/car_car"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/nav_car" />
 
-        <TextView
-            android:id="@+id/order_delivery_text"
-            android:layout_width="210dp"
-            android:layout_height="128dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginRight="15dp"
-            android:text="Informacja o telefonie"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/order_meal"
-            app:layout_constraintTop_toBottomOf="@+id/order_local_text" />
+    <TextView
+        android:id="@+id/car_text_car"
+        android:layout_width="210dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/car_car"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/order_lokal"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
-            android:contentDescription="Obrazek"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/nav_car" />
-
-        <TextView
-            android:id="@+id/order_local_text"
-            android:layout_width="210dp"
-            android:layout_height="128dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginRight="15dp"
-            android:text="Informacja o samochodzie"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/order_lokal"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/order_meal"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="30dp"
-            android:contentDescription="Obrazek"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/order_lokal"
-            app:srcCompat="@drawable/car_phone" />
-
-        <ImageView
-            android:id="@+id/order_wallet"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="30dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/order_meal"
-            app:srcCompat="@drawable/nav_calendar" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+    <ImageView
+        android:id="@+id/car_calendar"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/car_phone"
+        app:srcCompat="@drawable/nav_calendar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
