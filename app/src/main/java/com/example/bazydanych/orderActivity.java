@@ -40,6 +40,8 @@ public class orderActivity extends AppCompatActivity {
         String[] adres ={""};
         String[] klient ={""};
         String[] lokal={""};
+        String[] order_number;
+        final String[] buttonStatus = {"0"};
 
         Intent intent = getIntent();
         fa = this;
@@ -59,6 +61,7 @@ public class orderActivity extends AppCompatActivity {
         set_adres[0] = intent.getStringExtra("set_adres");
         set_lokal[0] = intent.getStringExtra("set_lokal");
         set_platnosc[0] = intent.getStringExtra("set_platnosc");
+        order_number = intent.getStringExtra("order_id").split("\n");
 
         adres = intent.getStringExtra("set_adres").split(" ");
         klient= intent.getStringExtra("set_klient").split(" ");
@@ -86,5 +89,27 @@ public class orderActivity extends AppCompatActivity {
                 startActivity(intent_order_help);
             }
         });
+
+        button_accepted.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                buttonStatus[0] = "1";
+
+                orderButtonBackground bg = new orderButtonBackground(orderActivity.this);
+                bg.execute(order_number[0],buttonStatus[0]);
+
+            }
+        });
+
+        button_denied.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                buttonStatus[0] = "0";
+
+                orderButtonBackground bg = new orderButtonBackground(orderActivity.this);
+                bg.execute(order_number[0],buttonStatus[0]);
+
+            }
+        }));
     }
 }
