@@ -28,4 +28,6 @@
     <string name="denied">Nieodebrane</string>
     <string name="phone">Zadzwoń</string>
     <string name="lokalizacja">Lokalizacja</string>
+    <string name="calendar1">Kalendarz zmian</string>
+    <string name="calendar2">Wybrana zmiana</string>
 </resources>

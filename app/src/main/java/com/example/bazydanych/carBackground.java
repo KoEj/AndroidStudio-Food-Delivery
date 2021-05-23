@@ -25,9 +25,8 @@ import java.net.URLEncoder;
 public class carBackground  extends AsyncTask<String, Void, String> {
     Context context;
     AlertDialog alertDialog;
-    //Intent intent_order;
+    Intent intent_car;
 
-    // String set_status = "", set_klient = "", set_adres = "", set_lokal = "", set_platnosc = "";
     String[] splitted;
     String ID;
 
@@ -43,10 +42,14 @@ public class carBackground  extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String s) {
-        alertDialog.setMessage(s);
-        alertDialog.show();
+        //alertDialog.setMessage(s);
+        //alertDialog.show();
 
-        Toast.makeText(context, "helo!", Toast.LENGTH_LONG).show();
+        if(splitted[0].equals("ConnectedOkOk")) {
+            context.startActivity(intent_car);
+        } else {
+            Toast.makeText(context, "Brak danych w bazie danych!", Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
@@ -77,27 +80,23 @@ public class carBackground  extends AsyncTask<String, Void, String> {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "ISO-8859-1"));
 
             while ((line = bufferedReader.readLine()) != null) {
-                result += line + "\n";
+                result += line;
             }
 
             bufferedReader.close();
             inputStream.close();
             httpURLConnection.disconnect();
 
-            //splitted = result.split("#");
+            splitted = result.split("#");
 
-            /*
-            intent_order = new Intent(context, orderActivity.class);
-            intent_order.putExtra("set_status", splitted[2]);
-            intent_order.putExtra("set_klient", splitted[3]);
-            intent_order.putExtra("set_adres", splitted[4]);
-            intent_order.putExtra("set_lokal", splitted[5]);
-            intent_order.putExtra("set_platnosc", splitted[6]);
-            intent_order.putExtra("order_id",splitted[7]);
-            */
-            return result;
-
-
+            if(splitted[0].equals("ConnectedOkOk")) {
+                intent_car = new Intent(context, carActivity.class);
+                intent_car.putExtra("connection", splitted[0]);
+                intent_car.putExtra("calendar", splitted[1]);
+                intent_car.putExtra("car", splitted[2]);
+                return result;
+            }
+            return "Błąd podłączenia z bazą danych";
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {

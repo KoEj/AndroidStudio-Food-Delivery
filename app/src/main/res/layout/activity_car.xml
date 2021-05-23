@@ -15,35 +15,11 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="15dp"
         android:layout_marginRight="15dp"
+        android:fontFamily="@font/baloo"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/car_calendar"
-        app:layout_constraintTop_toBottomOf="@+id/car_text_phone" />
-
-    <TextView
-        android:id="@+id/car_text_phone"
-        android:layout_width="205dp"
-        android:layout_height="128dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginRight="15dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/car_phone"
         app:layout_constraintTop_toBottomOf="@+id/car_text_car" />
-
-    <ImageView
-        android:id="@+id/car_phone"
-        android:layout_width="128dp"
-        android:layout_height="128dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/car_car"
-        app:srcCompat="@drawable/car_phone" />
 
     <ImageView
         android:id="@+id/car_car"
@@ -65,6 +41,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="15dp"
         android:layout_marginRight="15dp"
+        android:fontFamily="@font/baloo"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/car_car"
@@ -78,6 +55,6 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/car_phone"
+        app:layout_constraintTop_toBottomOf="@+id/car_car"
         app:srcCompat="@drawable/nav_calendar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
