@@ -4,6 +4,7 @@ package com.example.bazydanych;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +22,7 @@ public class orderActivity extends AppCompatActivity {
     Button button_help;
     Button button_accepted;
     Button button_denied;
+    Button button_lokalizacja;
     TextView order_local_text;
     TextView order_delivery_text;
     TextView order_payment_text;
@@ -49,6 +51,7 @@ public class orderActivity extends AppCompatActivity {
         button_accepted = findViewById(R.id.button_accepted);
         button_denied = findViewById(R.id.button_denied);
         button_help = findViewById(R.id.button_help);
+        button_lokalizacja = findViewById(R.id.button_lokalizacja);
         order_local_text = findViewById(R.id.order_local_text);
         order_delivery_text = findViewById(R.id.order_delivery_text);
         order_payment_text = findViewById(R.id.order_payment_text);
@@ -68,7 +71,7 @@ public class orderActivity extends AppCompatActivity {
         lokal = intent.getStringExtra("set_lokal").split(" ");
 
 
-        order_local_text.setText(lokal[1] + lokal[2]);
+        order_local_text.setText(lokal[1] + " "+ lokal[2] + adres[6]);
         if(adres[4].equals("")) {
             order_delivery_text.setText(klient[6] +" "+ klient[7] + klient[5] + "\n" + klient[2] + klient[3] + klient[4]
                     + "\n" + adres[2] +" "+ adres[3] +"\n"+ adres[6] +" "+ adres[7]);
@@ -96,16 +99,29 @@ public class orderActivity extends AppCompatActivity {
                 buttonStatus[0] = "1";
                 orderButtonBackground bg = new orderButtonBackground(orderActivity.this);
                 bg.execute(order_number[0],buttonStatus[0]);
+                fa.finish();
             }
         });
 
+        String[] finalOrder_number1 = order_number;
         button_denied.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 buttonStatus[0] = "0";
                 orderButtonBackground bg = new orderButtonBackground(orderActivity.this);
                 bg.execute(order_number[0],buttonStatus[0]);
+                fa.finish();
             }
         }));
+
+        button_lokalizacja.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*String thePlace = (.getText().toString());
+                Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                        Uri.parse("geo:0,0?q=(" + thePlace + ")"));
+                startActivity(intent);*/
+            }
+        });
     }
 }

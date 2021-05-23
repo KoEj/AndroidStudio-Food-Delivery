@@ -42,8 +42,8 @@ public class orderBackground  extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String s) {
-        //alertDialog.setMessage(s);
-        //alertDialog.show();
+        alertDialog.setMessage(s);
+        alertDialog.show();
 
         if (splitted[1].equals("Wyszukano\n") && splitted[0].equals("Connected\n") && !splitted[3].equals("\n")) {
             context.startActivity(intent_order);
