@@ -18,12 +18,15 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 
 @SuppressLint("StaticFieldLeak")
 public class orderBackground  extends AsyncTask<String, Void, String> {
     Context context;
     AlertDialog alertDialog;
+    Intent intent_order;
+    String set_status = "", set_klient = "", set_adres = "", set_lokal = "", set_platnosc = "";
 
     public orderBackground(Context con) {
         context = con;
@@ -33,6 +36,7 @@ public class orderBackground  extends AsyncTask<String, Void, String> {
     protected void onPreExecute() {
         alertDialog = new AlertDialog.Builder(context).create();
         alertDialog.setTitle("Test");
+        intent_order = new Intent(context, orderActivity.class);
     }
 
     @Override
@@ -40,15 +44,9 @@ public class orderBackground  extends AsyncTask<String, Void, String> {
         alertDialog.setMessage(s);
         alertDialog.show();
 
-
-        /*
-        if(s.equals("Logowanie udane!")) {
-            Intent intent_login = new Intent(context, loggedActivity.class);
-            context.startActivity(intent_login);
-            MainActivity.fa.finish();
-            Toast.makeText(context,"Logowanie udane!",Toast.LENGTH_LONG).show();
-        }
-        */
+        //context.startActivity(intent_order);
+        //orderActivity.fa.finish();
+        Toast.makeText(context,"Ready!",Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -57,6 +55,7 @@ public class orderBackground  extends AsyncTask<String, Void, String> {
         String ID = strings[0];
         String result = "";
         String line = "";
+        String[] splitted;
 
         try {
             URL url = new URL(connection);
@@ -67,8 +66,8 @@ public class orderBackground  extends AsyncTask<String, Void, String> {
             httpURLConnection.setDoInput(true);
 
             OutputStream outputStream = httpURLConnection.getOutputStream();
-            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
-            String post_data = URLEncoder.encode("ID","UTF-8")+"="+URLEncoder.encode(ID,"UTF-8");
+            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+            String post_data = URLEncoder.encode("ID", "UTF-8") + "=" + URLEncoder.encode(ID, "UTF-8");
             bufferedWriter.write(post_data);
             bufferedWriter.flush();
             bufferedWriter.close();
@@ -76,17 +75,27 @@ public class orderBackground  extends AsyncTask<String, Void, String> {
 
 
             InputStream inputStream = httpURLConnection.getInputStream();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"ISO-8859-1"));
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "ISO-8859-1"));
 
-            while((line = bufferedReader.readLine()) != null) {
-                result += line;
+            while ((line = bufferedReader.readLine()) != null) {
+                result += line + "\n";
             }
 
             bufferedReader.close();
             inputStream.close();
             httpURLConnection.disconnect();
 
-            return result;
+            splitted = result.split("#");
+
+            if (splitted[0].equals("Connected\nWyszukano")) {
+                intent_order.putExtra("set_status", splitted[1]);
+                intent_order.putExtra("set_klient", splitted[2]);
+                intent_order.putExtra("set_adres", splitted[3]);
+                intent_order.putExtra("set_lokal", splitted[4]);
+                intent_order.putExtra("set_platnosc", splitted[5]);
+
+                return result;
+            }
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
