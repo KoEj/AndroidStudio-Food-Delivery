@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -12,8 +13,7 @@
         android:roundIcon="@mipmap/logo_solo"
         android:supportsRtl="true"
         android:theme="@style/Theme.BazyDanych">
-        <activity android:name=".forgotActivity"></activity>
-        <activity android:name=".orderHelpActivity" />
+        <activity android:name=".forgotActivity" />
         <activity android:name=".shiftActivity" />
         <activity android:name=".carActivity" />
         <activity android:name=".historyOrdersActivity" />

@@ -26,6 +26,6 @@
     <string name="refresh">Odśwież</string>
     <string name="accepted">Odebrane</string>
     <string name="denied">Nieodebrane</string>
-    <string name="help">Pomoc</string>
+    <string name="phone">Zadzwoń</string>
     <string name="lokalizacja">Lokalizacja</string>
 </resources>

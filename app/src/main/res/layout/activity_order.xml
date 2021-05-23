@@ -147,10 +147,10 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/button_help"
+                android:id="@+id/button_phone"
                 android:layout_width="100dp"
                 android:layout_height="46dp"
-                android:text="@string/help"
+                android:text="@string/phone"
                 app:backgroundTint="#A92196F3" />
         </TableRow>
 
@@ -164,6 +164,7 @@
         android:layout_marginEnd="15dp"
         android:layout_marginRight="15dp"
         android:text="@string/lokalizacja"
+        app:backgroundTint="#9A673AB7"
         app:layout_constraintBottom_toBottomOf="@+id/order_lokal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.682"

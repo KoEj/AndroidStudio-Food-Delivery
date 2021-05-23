@@ -1,25 +1,27 @@
 package com.example.bazydanych;
 
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 public class orderActivity extends AppCompatActivity {
 
     @SuppressLint("StaticFieldLeak")
     public static Activity fa;
 
-    Button button_help;
+    Button button_phone;
     Button button_accepted;
     Button button_denied;
     Button button_lokalizacja;
@@ -50,7 +52,7 @@ public class orderActivity extends AppCompatActivity {
 
         button_accepted = findViewById(R.id.button_accepted);
         button_denied = findViewById(R.id.button_denied);
-        button_help = findViewById(R.id.button_help);
+        button_phone = findViewById(R.id.button_phone);
         button_lokalizacja = findViewById(R.id.button_lokalizacja);
         order_local_text = findViewById(R.id.order_local_text);
         order_delivery_text = findViewById(R.id.order_delivery_text);
@@ -71,7 +73,9 @@ public class orderActivity extends AppCompatActivity {
         lokal = intent.getStringExtra("set_lokal").split(" ");
 
 
-        order_local_text.setText(lokal[1] + " "+ lokal[2] + adres[6]);
+        String place = lokal[1] + " " + lokal[2] + adres[6];
+        String phone_number = klient[2] + klient[3] + klient[4];
+        order_local_text.setText(place);
         if(adres[4].equals("")) {
             order_delivery_text.setText(klient[6] +" "+ klient[7] + klient[5] + "\n" + klient[2] + klient[3] + klient[4]
                     + "\n" + adres[2] +" "+ adres[3] +"\n"+ adres[6] +" "+ adres[7]);
@@ -85,11 +89,12 @@ public class orderActivity extends AppCompatActivity {
         order_payment_text.setText(set_platnosc[0]);
         order_status.setText(set_status[0]);
 
-        button_help.setOnClickListener(new View.OnClickListener() {
+        button_phone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent_order_help = new Intent(orderActivity.this,orderHelpActivity.class);
-                startActivity(intent_order_help);
+                Intent intent_dial = new Intent(Intent.ACTION_DIAL);
+                intent_dial.setData(Uri.parse("tel:+48"+phone_number));
+                startActivity(intent_dial);
             }
         });
 
@@ -103,7 +108,6 @@ public class orderActivity extends AppCompatActivity {
             }
         });
 
-        String[] finalOrder_number1 = order_number;
         button_denied.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,10 +121,9 @@ public class orderActivity extends AppCompatActivity {
         button_lokalizacja.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*String thePlace = (.getText().toString());
-                Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-                        Uri.parse("geo:0,0?q=(" + thePlace + ")"));
-                startActivity(intent);*/
+                Intent intent_maps = new Intent(android.content.Intent.ACTION_VIEW,
+                        Uri.parse("geo:0,0?q=(" + place + ")"));
+                startActivity(intent_maps);
             }
         });
     }
