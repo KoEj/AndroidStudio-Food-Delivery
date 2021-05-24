@@ -91,7 +91,6 @@ public class carBackground  extends AsyncTask<String, Void, String> {
 
             if(splitted[0].equals("ConnectedOkOk")) {
                 intent_car = new Intent(context, carActivity.class);
-                intent_car.putExtra("connection", splitted[0]);
                 intent_car.putExtra("calendar", splitted[1]);
                 intent_car.putExtra("car", splitted[2]);
                 return result;

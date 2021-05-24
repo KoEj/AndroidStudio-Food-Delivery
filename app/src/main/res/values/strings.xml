@@ -30,4 +30,5 @@
     <string name="lokalizacja">Lokalizacja</string>
     <string name="calendar1">Kalendarz zmian</string>
     <string name="calendar2">Wybrana zmiana</string>
+    <string name="kolizja">Zgłoś kolizję</string>
 </resources>

@@ -16,6 +16,7 @@
         android:layout_marginEnd="15dp"
         android:layout_marginRight="15dp"
         android:fontFamily="@font/baloo"
+        android:gravity="center|left"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/car_calendar"
@@ -30,7 +31,8 @@
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/nav_car" />
+        app:srcCompat="@drawable/nav_car"
+        android:contentDescription="TODO" />
 
     <TextView
         android:id="@+id/car_text_car"
@@ -42,6 +44,7 @@
         android:layout_marginEnd="15dp"
         android:layout_marginRight="15dp"
         android:fontFamily="@font/baloo"
+        android:gravity="center|left"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/car_car"
@@ -56,5 +59,41 @@
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/car_car"
-        app:srcCompat="@drawable/nav_calendar" />
+        app:srcCompat="@drawable/nav_calendar"
+        android:contentDescription="TODO" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="398dp"
+        android:layout_height="191dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/car_text_calendar"
+        app:srcCompat="@drawable/pasisklep"
+        android:contentDescription="TODO" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="387dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/baloo"
+        android:gravity="center"
+        android:text="@string/kolizja"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <Button
+        android:id="@+id/button_emergency"
+        android:layout_width="296dp"
+        android:layout_height="193dp"
+        android:text="Button"
+        app:backgroundTint="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/imageView3" />
 </androidx.constraintlayout.widget.ConstraintLayout>
