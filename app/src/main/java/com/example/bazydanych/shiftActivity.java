@@ -14,8 +14,8 @@ public class shiftActivity extends AppCompatActivity {
     @SuppressLint("StaticFieldLeak")
     public static Activity fa;
 
-    CalendarView calendarView;
-    TextView shift_text;
+    public static CalendarView calendarView;
+    public static TextView shift_text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,6 @@ public class shiftActivity extends AppCompatActivity {
                 shiftBackground bg_shift = new shiftBackground(shiftActivity.this);
                 AsyncTask<String, String, String> x = bg_shift.execute(ID, date);
 
-                shift_text.setText(x.toString());
                 //System.out.print(x.toString());
 
                 if (bg_shift.getStatus() == AsyncTask.Status.FINISHED) {

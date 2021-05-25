@@ -18,7 +18,7 @@
         <activity android:name=".carActivity" />
         <activity android:name=".historyOrdersActivity" />
         <activity android:name=".loggedActivity" />
-        <activity android:name=".orderActivity" />
+        <activity android:name=".orderActivity" ></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -41,33 +41,40 @@ public class shiftBackground  extends AsyncTask<String, String, String> {
     protected void onPreExecute() {
         alertDialog = new AlertDialog.Builder(context).create();
         alertDialog.setTitle("Test");
-
+        TextView shift_text;
         //this.shift_text = (TextView) shift_text.findViewById(R.id.shift_text);
 
         //setContentView(R.layout.activity_shift);
         //shift_text = findViewById(R.id.shift_text);
     }
 
+    @Override
+    protected void onProgressUpdate(String... values) {
+        super.onProgressUpdate(values);
+    }
 
     @Override
     protected void onPostExecute(String s) {
-        alertDialog.setMessage(s);
-        alertDialog.show();
+        //alertDialog.setMessage(s);
+        //alertDialog.show();
 
 
         if(splitted[0].equals("Connected\nOk")) {
+            shiftActivity.shift_text.setText(splitted[1]);
         } else {
-            Toast.makeText(context, "Brak danych w bazie danych!", Toast.LENGTH_LONG).show();
+            //Toast.makeText(context, "Brak danych w bazie danych!", Toast.LENGTH_LONG).show();
+            shiftActivity.shift_text.setText(s);
         }
     }
 
     @Override
     protected String doInBackground(String... strings) {
-        String connection = "http://192.168.1.35/shift.php";
+        String connection = "http://192.168.0.17/shift.php";
         ID = strings[0];
         String date = strings[1];
         String result = "";
         String line = "";
+
 
         try {
             URL url = new URL(connection);
@@ -103,7 +110,7 @@ public class shiftBackground  extends AsyncTask<String, String, String> {
             if(splitted[0].equals("Connected\nOk")) {
                 return result;
             }
-            return "Błąd! Brak danych dla danej daty";
+            return "Brak zmian";
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
