@@ -83,6 +83,7 @@ public class loggedActivity extends AppCompatActivity implements NavigationView.
             case R.id.nav_calendar:
                 Intent intent_shift = new Intent(loggedActivity.this,shiftActivity.class);
                 intent_shift.putExtra("ID",ID);
+                intent_shift.putExtra("result","Kliknij w datę");
                 startActivity(intent_shift);
                 break;
 

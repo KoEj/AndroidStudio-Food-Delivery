@@ -50,7 +50,7 @@ public class forgotBackground  extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... strings) {
-        String connection = "http://192.168.0.15/forgot.php";
+        String connection = "http://192.168.0.17/forgot.php";
 
         String first_name= strings[0];
         String second_name = strings[1];

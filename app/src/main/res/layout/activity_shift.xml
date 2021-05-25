@@ -8,7 +8,7 @@
     >
 
     <TextView
-        android:id="@+id/order_delivery_text2"
+        android:id="@+id/shift_text"
         android:layout_width="398dp"
         android:layout_height="75dp"
         android:fontFamily="@font/baloo"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toBottomOf="@+id/shift_title2" />
 
     <CalendarView
-        android:id="@+id/simpleCalendarView"
+        android:id="@+id/CalendarView"
         android:layout_height="299dp"
         android:firstDayOfWeek="2"
         android:minDate="05/22/2021"
@@ -52,6 +52,6 @@
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/simpleCalendarView" />
+        app:layout_constraintTop_toBottomOf="@+id/CalendarView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

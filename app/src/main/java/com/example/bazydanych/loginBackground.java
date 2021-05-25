@@ -53,7 +53,7 @@ public class loginBackground  extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... strings) {
-        String connection = "http://192.168.0.15/login.php";
+        String connection = "http://192.168.1.35/login.php";
         String username = strings[0];
         intent_login.putExtra("ID", username);
         String password = strings[1];
