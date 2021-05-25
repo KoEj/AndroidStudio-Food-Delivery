@@ -75,9 +75,6 @@ public class loggedActivity extends AppCompatActivity implements NavigationView.
             case R.id.nav_car:
                 carBackground bg_car = new carBackground(this);
                 bg_car.execute(ID);
-                //Intent intent_car = new Intent(loggedActivity.this,carActivity.class);
-                //intent_car.putExtra("ID",ID);
-                //startActivity(intent_car);
                 break;
 
             case R.id.nav_calendar:
