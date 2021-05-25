@@ -14,7 +14,9 @@ public class shiftActivity extends AppCompatActivity {
     @SuppressLint("StaticFieldLeak")
     public static Activity fa;
 
+    @SuppressLint("StaticFieldLeak")
     public static CalendarView calendarView;
+    @SuppressLint("StaticFieldLeak")
     public static TextView shift_text;
 
     @Override
@@ -31,15 +33,7 @@ public class shiftActivity extends AppCompatActivity {
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 String date = year + "-" + month + "-" + dayOfMonth;
                 shiftBackground bg_shift = new shiftBackground(shiftActivity.this);
-                AsyncTask<String, String, String> x = bg_shift.execute(ID, date);
-
-                //System.out.print(x.toString());
-
-                if (bg_shift.getStatus() == AsyncTask.Status.FINISHED) {
-                    //shift_text.setText(bg_shift.toString());
-                    //shiftActivity.super.onRestart();
-
-                }
+                bg_shift.execute(ID, date);
             }
         });
     }
