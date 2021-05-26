@@ -46,6 +46,13 @@ public class orderBackground  extends AsyncTask<String, Void, String> {
         //alertDialog.show();
 
         if (splitted[1].equals("Wyszukano\n") && splitted[0].equals("Connected\n") && !splitted[3].equals("\n")) {
+            intent_order = new Intent(context, orderActivity.class);
+            intent_order.putExtra("set_status", splitted[2]);
+            intent_order.putExtra("set_klient", splitted[3]);
+            intent_order.putExtra("set_adres", splitted[4]);
+            intent_order.putExtra("set_lokal", splitted[5]);
+            intent_order.putExtra("set_platnosc", splitted[6]);
+            intent_order.putExtra("order_id",splitted[7]);
             context.startActivity(intent_order);
         } else {
             Toast.makeText(context, "Brak danych w bazie danych!", Toast.LENGTH_LONG).show();
@@ -89,13 +96,6 @@ public class orderBackground  extends AsyncTask<String, Void, String> {
 
             splitted = result.split("#");
             if (splitted[1].equals("Wyszukano\n") && splitted[0].equals("Connected\n") && !splitted[3].equals("\n")) {
-                intent_order = new Intent(context, orderActivity.class);
-                intent_order.putExtra("set_status", splitted[2]);
-                intent_order.putExtra("set_klient", splitted[3]);
-                intent_order.putExtra("set_adres", splitted[4]);
-                intent_order.putExtra("set_lokal", splitted[5]);
-                intent_order.putExtra("set_platnosc", splitted[6]);
-                intent_order.putExtra("order_id",splitted[7]);
                 return result;
             }
             return "Bład połączenia z bazą danych!";

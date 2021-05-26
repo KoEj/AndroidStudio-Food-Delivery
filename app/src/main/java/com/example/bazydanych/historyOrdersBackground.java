@@ -43,8 +43,8 @@ public class historyOrdersBackground  extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String s) {
-        alertDialog.setMessage(s);
-        alertDialog.show();
+        //alertDialog.setMessage(s);
+        //alertDialog.show();
 
         if (splitted[1].equals("Wyszukano") && splitted[0].equals("Connected")) {
             int n = Integer.parseInt(splitted[2]);
@@ -107,8 +107,6 @@ public class historyOrdersBackground  extends AsyncTask<String, Void, String> {
             splitted = result.split("#");
             if (splitted[1].equals("Wyszukano") && splitted[0].equals("Connected")) {
                 intent_history_orders = new Intent(context, historyOrdersActivity.class);
-//                String[] order = {"1","2","3"};
-//                String[] description = {"1","2","3"};
                 return result;
             }
             return "Bład połączenia z bazą danych!";

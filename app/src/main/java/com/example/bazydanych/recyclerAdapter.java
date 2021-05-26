@@ -1,5 +1,6 @@
 package com.example.bazydanych;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,9 +29,10 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyView
         return new MyViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.myText1.setText(data1[position]);
+        holder.myText1.setText("Zamówienie: " + data1[position]);
         holder.myText2.setText(data2[position]);
 
     }
