@@ -56,7 +56,7 @@ public class historyOrdersBackground  extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... strings) {
-        String connection = "http://192.168.0.17/history.php";
+        String connection = "http://192.168.1.42/history.php";
         ID = strings[0];
         String result = "";
         String line = "";
@@ -93,17 +93,17 @@ public class historyOrdersBackground  extends AsyncTask<String, Void, String> {
             if (splitted[1].equals("Wyszukano") && splitted[0].equals("Connected")) {
                 intent_history_orders = new Intent(context, historyOrdersActivity.class);
                int n = Integer.parseInt(splitted[2]);
-               //String[] order = new String[n];
-                //String[] description = new String[n];
-                String[] order = {"1","2","3"};
+                String[] order = new String[n];
+                String[] description = new String[n];
+//                String[] order = {"1","2","3"};
+//                String[] description = {"1","2","3"};
 
-                String[] description = {"1","2","3"};
-               /*for(int i=0;i<n;i++) {
+               for(int i=0;i<n;i++) {
                    re_splitted = splitted[i+3];
                     new_splitted = re_splitted.split("%");
                     order[i] = new_splitted[0];
                     description[i] = new_splitted[1];
-                }*/
+                }
                 intent_history_orders.putExtra("order",order);
                 intent_history_orders.putExtra("description",description);
                 return result;
