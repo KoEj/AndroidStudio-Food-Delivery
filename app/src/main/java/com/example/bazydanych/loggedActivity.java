@@ -67,9 +67,8 @@ public class loggedActivity extends AppCompatActivity implements NavigationView.
                 break;
 
             case R.id.nav_history_orders:
-                Intent intent_history_orders = new Intent(loggedActivity.this,historyOrdersActivity.class);
-                intent_history_orders.putExtra("ID",ID);
-                startActivity(intent_history_orders);
+                historyOrdersBackground bg_history = new historyOrdersBackground(this);
+                bg_history.execute(ID);
                 break;
 
             case R.id.nav_car:
