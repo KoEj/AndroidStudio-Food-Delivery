@@ -18,8 +18,8 @@
 
             <TextView
                 android:id="@+id/string2"
-                android:layout_width="331dp"
-                android:layout_height="75dp"
+                android:layout_width="334dp"
+                android:layout_height="37dp"
                 android:fontFamily="@font/baloo"
                 android:text="Opis"
                 android:textSize="18sp"

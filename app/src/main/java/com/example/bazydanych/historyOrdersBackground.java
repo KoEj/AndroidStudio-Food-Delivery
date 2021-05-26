@@ -47,8 +47,23 @@ public class historyOrdersBackground  extends AsyncTask<String, Void, String> {
         alertDialog.show();
 
         if (splitted[1].equals("Wyszukano") && splitted[0].equals("Connected")) {
+            int n = Integer.parseInt(splitted[2]);
+            String[] order = new String[n];
+            String[] description = new String[n];
+
+
+
+            for(int i=0;i<n;i++) {
+                re_splitted = splitted[i+3];
+                new_splitted = re_splitted.split("%");
+                order[i] = new_splitted[0];
+                description[i] = new_splitted[1];
+            }
+
             Intent intent_history_orders = new Intent(context, historyOrdersActivity.class);
             intent_history_orders.putExtra("ID", ID);
+            intent_history_orders.putExtra("order",order);
+            intent_history_orders.putExtra("description",description);
             context.startActivity(intent_history_orders);
         }
 
@@ -92,20 +107,8 @@ public class historyOrdersBackground  extends AsyncTask<String, Void, String> {
             splitted = result.split("#");
             if (splitted[1].equals("Wyszukano") && splitted[0].equals("Connected")) {
                 intent_history_orders = new Intent(context, historyOrdersActivity.class);
-               int n = Integer.parseInt(splitted[2]);
-                String[] order = new String[n];
-                String[] description = new String[n];
 //                String[] order = {"1","2","3"};
 //                String[] description = {"1","2","3"};
-
-               for(int i=0;i<n;i++) {
-                   re_splitted = splitted[i+3];
-                    new_splitted = re_splitted.split("%");
-                    order[i] = new_splitted[0];
-                    description[i] = new_splitted[1];
-                }
-                intent_history_orders.putExtra("order",order);
-                intent_history_orders.putExtra("description",description);
                 return result;
             }
             return "Bład połączenia z bazą danych!";
