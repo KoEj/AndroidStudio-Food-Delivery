@@ -54,7 +54,7 @@ public class carBackground  extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... strings) {
-        String connection = "http://192.168.0.17/car.php";
+        String connection = "http://192.168.1.42/car.php";
         ID = strings[0];
         String result = "";
         String line = "";

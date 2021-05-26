@@ -69,7 +69,7 @@ public class shiftBackground  extends AsyncTask<String, String, String> {
 
     @Override
     protected String doInBackground(String... strings) {
-        String connection = "http://192.168.0.17/shift.php";
+        String connection = "http://192.168.1.42/shift.php";
         ID = strings[0];
         String date = strings[1];
         String result = "";
