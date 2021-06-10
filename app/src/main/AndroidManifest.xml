@@ -13,13 +13,13 @@
         android:roundIcon="@mipmap/logo_solo"
         android:supportsRtl="true"
         android:theme="@style/Theme.BazyDanych">
-        <activity android:name=".forgotActivity" />
-        <activity android:name=".shiftActivity" />
-        <activity android:name=".carActivity" />
-        <activity android:name=".historyOrdersActivity" />
-        <activity android:name=".loggedActivity" />
-        <activity android:name=".orderActivity" ></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".forgotActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".shiftActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".carActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".historyOrdersActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".loggedActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".orderActivity" />
+        <activity android:name=".MainActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
