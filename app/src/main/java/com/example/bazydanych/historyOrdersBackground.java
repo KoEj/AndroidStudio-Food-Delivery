@@ -71,7 +71,7 @@ public class historyOrdersBackground  extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... strings) {
-        String connection = "http://192.168.1.42/history.php";
+        String connection = "http://192.168.0.17/history.php";
         ID = strings[0];
         String result = "";
         String line = "";

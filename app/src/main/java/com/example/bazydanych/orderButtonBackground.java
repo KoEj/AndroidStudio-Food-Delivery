@@ -48,7 +48,7 @@ public class orderButtonBackground extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... strings) {
-        String connection = "http://192.168.1.42/status.php";
+        String connection = "http://192.168.0.17/status.php";
 
         String ID=strings[0];
         String buttonStatus = strings[1];
